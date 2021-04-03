@@ -5,15 +5,7 @@ const app = express();
 // const bodyParser = require('body-parser');
 // const mongoose = require('mongoose');
 require('dotenv').config();
-const http = require("http");
-const server = http.createServer(app);
-const socket = require("socket.io");
-const io = socket(server, {
-    cors: {
-        origin: process.env.CLIENT_URL,
-        method: ["GET", "POST"]
-    }
-});
+
 
 // connect to db--------------------------------
 // mongoose
@@ -37,6 +29,16 @@ app.use(cors()); // allows all origins
 // if ((process.env.NODE_ENV = 'development')) {
 //     app.use(cors({ origin: `http://localhost:3000` }));
 // }
+
+const http = require("http");
+const server = http.createServer(app);
+const socket = require("socket.io");
+const io = socket(server, {
+    cors: {
+        origin: process.env.CLIENT_URL,
+        method: ["GET", "POST"]
+    }
+});
 
 //import routes-----------------------------------
 // const authRoutes = require('./routes/auth');
